@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Projeto Virtudes - Equipe</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+     <!-- Ícones Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+
+    <link rel="stylesheet" href="CSS/styles.css" />
+  </head>
+  <body>
+    
+    <header>
+      <!-- Seção de Navegação -->
+      <nav class="navbar">
+        <div class="navbar-container">
+          <!-- Logotipo ou Nome do Site -->
+          <a href="index.html" class="logo">
+            <img src="images/logo-virtudes.png" alt="logo" />
+          </a>
+
+          <!-- Botão Menu Mobile (Hambúrguer) -->
+          <button class="navbar-toggle" onclick="menuToggle()">
+            <span class="linha"></span>
+            <span class="linha"></span>
+            <span class="linha"></span>
+          </button>
+          <!-- Fim do Botão Menu Mobile (Hambúrguer) -->
+
+          <!-- Navbar Menu Mobile -->
+          <ul class="navbar-menu">
+            <li>
+              <a href="index.html" class="nav-link" onclick="navigate('acoes')">
+                <i class="fa-solid fa-tent icons-menu-mobile"></i>
+                <span class="text-menu">Início</span></a
+              >
+            </li>
+
+            <li>
+              <a href="index.html#acoes" class="nav-link" onclick="navigate('acoes')">
+                <i class="fa-solid fa-leaf icons-menu-mobile"></i>
+                <span class="text-menu">Ações</span></a
+              >
+            </li>
+
+            <li>
+              <a
+                href="index.html#entrevistas"
+                class="nav-link"
+                onclick="navigate('entrevistas')"
+                ><i class="fa-solid fa-video icons-menu-mobile"></i
+                ><span class="text-menu"> Entrevistas</span></a
+              >
+            </li>
+
+            <li>
+              <a href="index.html#Registros-encontros" class="nav-link"
+                ><i class="fa-solid fa-people-group icons-menu-mobile"></i
+                ><span class="text-menu"> Encontros</span></a
+              >
+            </li>
+
+            <li>
+              <a href="equipe.html" class="nav-link">
+                <i class="fa-solid fa-users icons-menu-mobile"></i
+                ><span class="text-menu"> Equipe</span></a
+              >
+            </li>
+
+            <li>
+              <a href="https://wa.me/5547999462664?text=Ol%C3%A1!%0AVenho%20atrav%C3%A9s%20do%20Site%20*PROJETO%20VIRTUDES%20-%20O%20DESPERTAR*%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20projeto!" class="nav-link"
+              target="_blank">
+                
+                <i class="bi bi-whatsapp icons-menu-mobile whats"></i
+                ><span class="text-menu"> Contato</span></a
+              >
+            </li>
+          </ul>
+          <!-- Navbar Menu Mobile -->
+        </div>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <section id="team" class="page-section">
+        <div class="content-area">
+          <h2 class="section-title-equipe">Nossa Equipe de Colaboradores</h2>
+          <p class="main-text">
+            Conheça as pessoas que dedicam seu tempo e energia para o
+            desenvolvimento e realização dos projetos e ações do Projeto
+            Virtudes. Juntos, somos mais fortes!
+          </p>
+
+          <div class="team-grid">
+            <div class="member-card">
+              <a href="https://www.instagram.com/rodrigo.pedrodias/" target="_blank">
+              <img
+                src="/IMAGES/3.webp"
+                alt="Rodrigo Pedro Dias"
+                class="member-img"
+              />
+              </a>
+              <h3 class="member-name">Rodrigo Pedro Dias</h3>
+              <p class="member-role">Gestor Social; Educador Físico, especialista em Treinamento Desportivo; Terapeuta Holístico e Palestrante. Atua como professor e técnico nas áreas de Xadrez, Natação, Educação Física, Futebol e Surfe. Desenvolve ações estruturadas voltadas ao desenvolvimento humano, educacional e social, por meio do autoconhecimento, do esporte, da educação e da Saúde Integral.</p>
+            <!-- Símbolo da Logo -->
+      <p class="member-role insta-rodrigo">
+                <a href="https://www.instagram.com/rodrigo.pedrodias/" target="_blank" class="insta-rodrigo">      @rodrigo.pedrodias</a>
+                        </p>
+        </a>
+
+
+              <div class="logo-symbol-equipe">
+      <img
+                src="./IMAGES/logo-symbol.png"
+                alt="logo icon"
+                class="icon-logo-symbol-equipe"
+                id="logo-icon"
+                loading="lazy"
+                onerror="this.src='https://placehold.co/80x80/540085/ffffff?text=LOGO';"
+              />
+        </div>
+            </div>
+
+            <div class="member-card">
+              <a href="https://www.instagram.com/mila_dani/" target="_blank">
+              <img
+                src="/IMAGES/1.webp"
+                alt="Rodrigo Pedro Dias"
+                class="member-img"
+              />
+              </a>
+              <h3 class="member-name">Camila Daniela Pereira</h3>
+              <p class="member-role">Ceramista, alimentação Saudável o que é, como ter, dicas e importância. Entenda os benefícios da boa alimentação para a saúde.</p>
+              <p class="member-role insta-camila">
+                <a href="https://www.instagram.com/mila_dani/" target="_blank" class="mila_dani">@mila_dani</a>
+                        </p>
+
+                        
+              <div class="logo-symbol-equipe">
+                
+      <img
+                src="./IMAGES/logo-symbol.png"
+                alt="logo icon"
+                class="icon-logo-symbol-equipe"
+                id="logo-icon"
+                loading="lazy"
+                onerror="this.src='https://placehold.co/80x80/540085/ffffff?text=LOGO';"
+              />
+        </div>
+            </div>
+
+            <div class="member-card">
+              <img
+                src="/IMAGES/2.webp"
+                alt="Colaborador B"
+                class="member-img"
+              />
+              <h3 class="member-name">Steffany Barradas</h3>
+              <p class="member-role">Estimula as pessoas do Projeto Virtudes e da sociedade a desenvolverem ações visando um bem comum.</p>
+              <div class="logo-symbol-equipe">
+      <img
+                src="./IMAGES/logo-symbol.png"
+                alt="logo icon"
+                class="icon-logo-symbol-equipe"
+                id="logo-icon"
+                loading="lazy"
+                onerror="this.src='https://placehold.co/80x80/540085/ffffff?text=LOGO';"
+              />
+        </div>
+            </div>
+
+            <div class="member-card">
+              <img
+                src="/IMAGES/leo-219x300-lg.webp"
+                alt="Colaborador A"
+                class="member-img"
+              />
+              <h3 class="member-name">Leonardo Bohnenberger</h3>
+              <p class="member-role">Atua na área de vendas, ajudando pessoas no setor imobiliário. Palestrante focado em promover reflexões e compartilhar conhecimentos adquiridos através de experiências pessoais junto a métodos práticos para auxílio do desenvolvimento pessoal.</p>
+              <div class="logo-symbol-equipe">
+      <img
+                src="./IMAGES/logo-symbol.png"
+                alt="logo icon"
+                class="icon-logo-symbol-equipe"
+                id="logo-icon"
+                loading="lazy"
+                onerror="this.src='https://placehold.co/80x80/540085/ffffff?text=LOGO';"
+              />
+        </div>
+            </div>
+
+            
+
+          </div>
+          
+<!-- Slide deslizante de reprodução automática infinito -->
+            <div class="slider">
+              <div class="slide-track">
+                <!-- 9 Slides -->
+                 <div class="slide-icon"><img src="/IMAGES/Caregiver.png" alt=""></div>
+    <div class="slide-icon"><img src="/IMAGES/Intelligence.png" alt=""></div>
+    <div class="slide-icon"><img src="/IMAGES/TourGuide.png" alt=""></div>
+    <div class="slide-icon"><img src="/IMAGES/Gardening.png" alt=""></div>
+    <div class="slide-icon"><img src="/IMAGES/logo-symbol.png" alt=""></div>
+    <div class="slide-icon"><img src="/IMAGES/Kombucha.png" alt=""></div>
+    <div class="slide-icon"><img src="/IMAGES/Meditation.png" alt=""></div>
+    <div class="slide-icon"><img src="/IMAGES/CommunityCleanup.png" alt=""></div>
+    <div class="slide-icon"><img src="/IMAGES/Bench.png" alt=""></div>
+
+    <!-- Os Mesmos 9 Slides duplicados (idênticas) -->
+    <div class="slide-icon"><img src="/IMAGES/Caregiver.png" alt=""></div>
+    <div class="slide-icon"><img src="/IMAGES/Intelligence.png" alt=""></div>
+    <div class="slide-icon"><img src="/IMAGES/TourGuide.png" alt=""></div>
+    <div class="slide-icon"><img src="/IMAGES/Gardening.png" alt=""></div>
+    <div class="slide-icon"><img src="/IMAGES/logo-symbol.png" alt=""></div>
+    <div class="slide-icon"><img src="/IMAGES/Kombucha.png" alt=""></div>
+    <div class="slide-icon"><img src="/IMAGES/Meditation.png" alt=""></div>
+    <div class="slide-icon"><img src="/IMAGES/CommunityCleanup.png" alt=""></div>
+    <div class="slide-icon"><img src="/IMAGES/Bench.png" alt=""></div>
+  </div>
+            </div> <!-- Fim do Slide deslizante de reprodução automática infinito -->
+
+          <div class="team-grid2">
+
+            <div class="member-card">
+              <img
+                src="/IMAGES/iasmim-240x300-lg.webp"
+                alt="Colaborador C"
+                class="member-img"
+              />
+              <h3 class="member-name">Iasmim Michelloti</h3>
+              <p class="member-role">Estimula as pessoas do Projeto Virtudes e da sociedade a desenvolverem ações visando um bem comum.</p>
+              <div class="logo-symbol-equipe">
+      <img
+                src="./IMAGES/logo-symbol.png"
+                alt="logo icon"
+                class="icon-logo-symbol-equipe"
+                id="logo-icon"
+                loading="lazy"
+                onerror="this.src='https://placehold.co/80x80/540085/ffffff?text=LOGO';"
+              />
+        </div>
+            </div>
+            
+            <div class="member-card">
+              <img
+                src="/IMAGES/vanessa-240x300-lg.webp"
+                alt="Colaborador A"
+                class="member-img"
+              />
+              <h3 class="member-name">Vanessa Borges</h3>
+              <p class="member-role">Proprietária da marca Vegastê dicas e receitas.</p>
+              <div class="logo-symbol-equipe">
+      <img
+                src="./IMAGES/logo-symbol.png"
+                alt="logo icon"
+                class="icon-logo-symbol-equipe"
+                id="logo-icon"
+                loading="lazy"
+                onerror="this.src='https://placehold.co/80x80/540085/ffffff?text=LOGO';"
+              />
+        </div>
+            </div>
+
+            <div class="member-card">
+              <img
+                src="/IMAGES/siegleverson-240x300-lg.webp"
+                alt="Colaborador B"
+                class="member-img"
+              />
+              <h3 class="member-name">Siegleverson Cordeiro Beulke</h3>
+              <p class="member-role">Captação de imagens, edição e finalização vídeos. Atua na edição de produções audiovisuais.</p>
+              <div class="logo-symbol-equipe">
+      <img
+                src="./IMAGES/logo-symbol.png"
+                alt="logo icon"
+                class="icon-logo-symbol-equipe"
+                id="logo-icon"
+                loading="lazy"
+                onerror="this.src='https://placehold.co/80x80/540085/ffffff?text=LOGO';"
+              />
+        </div>
+            </div>
+
+
+
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <!-- Logo Acima da Seção Fale Conosco -->
+        <section class="about-section2">
+              <img
+                      src="./IMAGES/logo-virtudes.png"
+                      alt="logo icon"
+                      class="icon-logo animate-pulsar"
+                      id="logo-icon2"
+                      loading="lazy"
+                      onerror="this.src='https://placehold.co/80x80/540085/ffffff?text=LOGO';"
+                    />
+        </section>
+
+        <!-- Seção Fale Conosco -->
+      <!-- <section id="contact" class="contact">
+        <h2 class="section-title">Fale Conosco</h2>
+        <form
+  id="myForm"
+  class="formulario"
+  action="https://formsubmit.co/numcompensa25@gmail.com"
+  method="POST"
+>
+  <input type="text" name="Name" placeholder="Nome" required />
+  <input type="email" name="email" placeholder="E-mail" required />
+  <input type="tel" name="Phone" placeholder="Telefone" required />
+  <textarea name="Message" placeholder="Mensagem" required></textarea>
+  <button type="submit">ENVIAR</button>
+
+  <input type="hidden" name="_subject" value="Nova mensagem do site!" />
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_template" value="table" />
+   opcional: _next só funciona se não usar AJAX (coloque aqui uma página de obrigado se quiser redirect sem JS) -->
+  <input type="hidden" name="_next" value="https://www.projetovirtudes.ong.br/obrigado.html" />
+</form>
+
+<!-- Modal de sucesso (mantém o seu markup existente) -->
+<div id="customAlert" class="modal2" style="display:none;">
+  <div class="modal2-content">
+    <span class="close-btn2" id="closeBtn2">×</span>
+    <p id="alertMessage">
+      Mensagem enviada com sucesso!<br />Em breve retornaremos seu contato!
+    </p>
+  </div>
+</div>
+
+        <div
+          id="responseMessage"
+          style="
+            display: none;
+            padding: 20px;
+            background-color: #e0f7fa;
+            border: 1px solid #00796b;
+            color: #00796b;
+            border-radius: 5px;
+            margin-top: 20px;
+          "
+        >
+          <p id="responseText"></p>
+        </div>
+
+        <!-- Mensagem Devolutivca de Envio de Mensagens -->
+        <div id="customAlert" class="modal2">
+          <div class="modal2-content">
+            <span class="close-btn2" id="closeBtn2">×</span>
+            <p id="alertMessage">
+              Mensagem enviada com sucesso!<br />Em breve retornaremos seu
+              contato!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Social Media -->
+      <div class="social-links">
+        <a href="https://www.facebook.com/ProjetoVirtudesODespertar/" id="face" class="social-icon facebook" aria-label="Facebook" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/rodrigo.pedrodias/" id="insta" class="social-icon instagram" aria-label="Instagram" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/5547999462664?text=Olá%2C%20vim%20pelo%20site%20Projeto%20Virtudes%20e%20gostaria%20de%20mais%20informações%21" class="social-icon whatsapp" aria-label="WhatsApp" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="mailto:rodrigo_xadrez@hotmail.com" id="email" class="social-icon email" aria-label="Email" target="_blank">
+          <i class="far fa-envelope"></i>
+        </a>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+        <div class="footer-container">
+          <p class="footer-text">
+            &copy; 2025 Projeto Virtudes | Todos os direitos reservados.
+          </p>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Script do Formulário (Fale Conosco) -->
+<script>
+/*
+  Script de envio via FormSubmit (AJAX).
+  - usa o endpoint AJAX: https://formsubmit.co/ajax/SEU_EMAIL
+  - limpa o formulário ao enviar com sucesso
+  - mostra seu modal customAlert (já presente no HTML)
+*/
+(function () {
+  const form = document.getElementById('myForm');
+  const alertBox = document.getElementById('customAlert');
+  const closeBtn = document.getElementById('closeBtn2');
+
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) submitBtn.disabled = true;
+
+    // endpoint AJAX do FormSubmit (substitua o e-mail se necessário)
+    const actionAjax = form.action.replace('https://formsubmit.co/', 'https://formsubmit.co/ajax/');
+
+    // prepara os dados (mantém hidden fields)
+    const formData = new FormData(form);
+
+    fetch(actionAjax, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        // FormSubmit aceita o body FormData sem content-type explícito;
+        // não setamos 'Content-Type' para permitir multipart/form-data correto.
+        'Accept': 'application/json'
+      }
+    })
+      .then(async (response) => {
+        // FormSubmit retorna JSON com { success: true } em caso de sucesso
+        if (response.ok) {
+          // limpamos o form e mostramos o modal
+          form.reset();
+
+          // abrir modal
+          if (alertBox) alertBox.style.display = 'block';
+
+        } else {
+          // tenta extrair mensagem do servidor (se houver)
+          let text = 'Ocorreu um erro ao enviar o formulário. Tente novamente.';
+          try {
+            const json = await response.json();
+            if (json && json.message) text = json.message;
+          } catch (err) {
+            /* ignore */
+          }
+          alert(text);
+        }
+      })
+      .catch((err) => {
+        console.error('Form submit error:', err);
+        alert('Erro de conexão. Verifique sua internet.');
+      })
+      .finally(() => {
+        if (submitBtn) submitBtn.disabled = false;
+      });
+  });
+
+  // fechar modal: botão e clique fora
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      if (alertBox) alertBox.style.display = 'none';
+    });
+  }
+
+  window.addEventListener('click', (ev) => {
+    if (ev.target === alertBox) {
+      alertBox.style.display = 'none';
+    }
+  });
+})();
+</script>
+
+<!-- Script de Animação de Mensagem Devolutiva do Formulário (Fale Conosco) -->
+<script>
+  const GROWTH_DURATION = 1000; 
+
+  function typeWriter(element, callback) {
+    const text = element.getAttribute("data-text");
+    if (!text) {
+      if (callback) callback();
+      return;
+    }
+
+    const textArray = text.split("");
+    const typingSpeed = 75;
+
+    element.style.opacity = "1";
+    element.innerHTML = "";
+
+    textArray.forEach((letter, index) => {
+      setTimeout(() => {
+        element.innerHTML += letter;
+
+        if (index === textArray.length - 1 && callback) {
+          callback();
+        }
+      }, typingSpeed * index);
+    });
+  }
+
+  function startTitleAnimation() {
+    const title1 = document.getElementById("title1");
+    const title2 = document.getElementById("title2");
+    const logoIcon = document.getElementById("logo-icon");
+    const iconInitialClass = logoIcon ? logoIcon.className : ""; 
+
+    if (title1 && title2 && logoIcon) {
+      title2.style.opacity = "0";
+
+      title1.setAttribute("data-text", title1.textContent.trim());
+      title2.setAttribute("data-text", title2.textContent.trim());
+
+      typeWriter(title1, () => {
+        typeWriter(title2, () => {
+          logoIcon.style.transition = `opacity ${GROWTH_DURATION}ms ease-out, transform ${GROWTH_DURATION}ms ease-out`;
+          logoIcon.classList.add("show-and-grow");
+
+          setTimeout(() => {
+            logoIcon.style.transition = "none";
+            logoIcon.classList.add("animate-ChangeColor");
+
+            if (typeof contactSection_startTyping === 'function') {
+                contactSection_startTyping();
+            }
+          }, GROWTH_DURATION);
+        });
+      });
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", startTitleAnimation);
+</script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"
+      integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const links = document.querySelectorAll(".nav-link");
+        const currentPage = window.location.pathname;
+
+        links.forEach((link) => {
+          const href = link.getAttribute("href");
+
+          // Se o link aponta para a própria página, fica ativo
+          if (href.includes("equipe2.html")) {
+            link.classList.add("active");
+          }
+        });
+      });
+    </script>
+
+    <script>
+        // --- JavaScript para Navegação e Modais ---
+
+          document.addEventListener("DOMContentLoaded", () => {
+            // --- 1. Inicialização e Navegação Corrigida ---
+            const navLinks = document.querySelectorAll(".nav-link");
+            const HEADER_HEIGHT = 80; // Altura fixa do header em pixels
+
+            /**
+            * Função de navegação client-side (para scroll).
+            * Esta função só é usada pelos links de âncora desta página.
+            * @param {string} pageId - O ID da seção de destino (ex: 'projeto', 'troca', 'acoes').
+            */
+            window.navigate = (pageId) => {
+              
+              const targetElement = document.getElementById(pageId);
+              
+              // Se o target for "projeto" (clicar na logo), rola para o topo
+              if (pageId === "projeto") {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+              
+              // Rola para a seção, se ela for uma âncora desta página
+              if (targetElement) {
+                
+                // Calcula a posição do elemento menos a altura do header
+                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT;
+
+                // Rola para a posição calculada
+                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                
+                // 2. Atualiza a classe 'active' no menu APENAS para os links de scroll/click do menu principal
+                if (pageId === 'acoes' || pageId === 'entrevistas') {
+                    navLinks.forEach((link) => {
+                        link.classList.remove("active");
+                        
+                        // Mapeia o ID atual (pageId) para o texto do link
+                        let targetText;
+                        switch (pageId) {
+                          case 'acoes': targetText = 'projetos & ações'; break;
+                          case 'entrevistas': targetText = 'entrevistas'; break;
+                          default: return; 
+                        }
+
+                        if (link.textContent.toLowerCase().includes(targetText)) {
+                            link.classList.add("active");
+                        }
+                    });
+                } else {
+                    // Se clicar na logo ou em um ponto que não seja de menu de navegação, desativa todos.
+                    navLinks.forEach((link) => {
+                        link.classList.remove("active");
+                    });
+                }
+              }
+
+
+
+              // MENU MOBILE
+              // 3. Fecha o menu mobile, se estiver aberto
+              const menuMobile = document.getElementById("menu-mobile");
+              menuMobile.classList.remove("mobile-open");
+
+            };
+
+
+            // --- 2. Menu Mobile Toggle (Mantido) ---
+            const btnMenu = document.getElementById("btn-menu");
+            const menuMobile = document.getElementById("menu-mobile");
+            const overlayMenu = document.getElementById("overlay-menu");
+
+            btnMenu.addEventListener("click", () => {
+              menuMobile.classList.add("abrir-menu");
+            });
+            
+            menuMobile.addEventListener("click", () => {
+              menuMobile.classList.remove("abrir-menu");
+            });
+            
+            overlayMenu.addEventListener("click", () => {
+              menuMobile.classList.remove("abrir-menu");
+            });
+            // FIM DO MENU MOBILE
+
+            // --- 3. Manipulação de Modais (Mantido) ---
+            const modals = document.querySelectorAll(".modal"); 
+            const modalLinks = document.querySelectorAll(".card-link");
+
+
+            // Função para abrir modal (Simplificada)
+            function openModal(modalId) {
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.style.display = "block"; 
+                    setTimeout(() => modal.classList.add("open"), 10);
+                }
+            }
+
+            // Função para fechar modal (Simplificada)
+            function closeModal(modalElement) {
+                modalElement.classList.remove("open");
+                setTimeout(() => modalElement.style.display = "none", 300); 
+            }
+
+            // Listener para links dos cards
+            modalLinks.forEach((link) => {
+                link.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const target = link.getAttribute("data-target").replace('modal-', ''); 
+                    
+                    // Mapeia o sufixo ao ID real no HTML
+                    let modalId;
+                    switch (target) {
+                        case "caridade": modalId = "modal-caridade"; break;
+                        case "saberes": modalId = "modal-saberes"; break;
+                        case "ecologicos": modalId = "modal-ecologicos"; break;
+                        case "plantio": modalId = "modal-plantio"; break;
+                        case "trocas": modalId = "modal-trocas"; break;
+                        case "meditacao": modalId = "modal-meditacao"; break;
+                        case "limpeza": modalId = "modal-limpeza"; break;
+                        case "mobiliario": modalId = "modal-mobiliario"; break;
+                        default: return;
+                    }
+                    openModal(modalId);
+                });
+            });
+
+            // Listener para botões de fechar (x)
+            modals.forEach((modal) => {
+                modal.querySelector(".close-btn").addEventListener("click", () => {
+                    closeModal(modal);
+                });
+            });
+
+            // Listener para fechar modal clicando fora
+            window.addEventListener("click", (e) => {
+                modals.forEach((modal) => {
+                    if (e.target === modal) {
+                        closeModal(modal);
+                    }
+                });
+            });
+
+            // Listener para fechar modal com a tecla ESC
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                    modals.forEach((modal) => {
+                        if (modal.classList.contains("open")) {
+                            closeModal(modal);
+                        }
+                    });
+                }
+            });
+          });
+      </script>
+
+  </body>
+</html>
