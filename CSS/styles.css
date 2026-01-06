@@ -1,0 +1,2829 @@
+/* --------------------------------------------------------------------------------------------------
+ * ARQUIVO CSS CONSOLIDADO
+ * Base: Código principal (Primeiro Bloco)
+ * Modais: Código de modais (Segundo Bloco)
+ * --------------------------------------------------------------------------------------------------
+ */
+
+/* --- Cores e Variáveis --- */
+:root {
+  --header-height: 80px;
+  --esp-bco: #f4f4f4;
+  --esp-blue: #0a3d62;
+  --esp-roxo: #470f86;
+  --esp-roxo2: #540085;
+  --esp-roxo3: #540085e4;
+  --esp-roxo4: #5d009b;
+  --esp-roxo5: #8a3ab9;
+  --esp-roxo6: #463672c5;
+  --esp-textShadow-roxo: #540085e4; /* 1px 1px 3px (Para o H2) */
+  --esp-background-roxo: #2e0a57;
+  --esp-background: #f9f9f9;
+  --esp-bg-button: #8454bb;
+  --esp-btn-to-close: #da1e37;
+  --esp-blue2: #1e40af;
+  --esp-yellow: #ffc400;
+  --esp-text-gray: #8a8a8a;
+  --esp-text-gray2: #4b5563;
+  --esp-text-gray3: #282338af;
+  --esp-dark-text: #1f2937;
+  --esp-shadow: #432a9e;
+  --scroll-width: 0px; /* será preenchido por JS */
+  --duration: 30s; /* duração padrão (ajustada por JS) */
+  /* Define o valor do seu 5rem em pixels ou use 12vh/80px como fallback se for fixo */
+  --header-height: 12hv;
+  --roxo-principal: #540085; /* Usaremos esta para a faixa inferior */
+  --roxo-secao-fundo: #470f86; /* Cor da moldura externa roxa */
+}
+
+/* Importação de Fonte */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pacifico&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/* Reset básico (do segundo bloco, mas simplificado para evitar conflitos) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* --- Base & Configuração Global --- */
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--esp-dark-text);
+  background-color: var(--esp-background);
+  margin: 0;
+  padding: 0;
+  block-size: border-box;
+  line-height: 1.6;
+  /* Usando um degradê radial para criar o efeito de "luz central" */
+  background: radial-gradient(
+    circle at center,
+    /* 1. Centro: Roxo muito claro, quase branco (foco principal) */ #f4f4f4 0%,
+
+    /* 2. Transição: Roxo suave */ #e1d7f1 40%,
+
+    /* 3. Bordas: Roxo mais escuro (cor do rodapé/transição) */ #5d10a4 100%
+  );
+
+  /* Garante que o fundo cubra toda a altura da página */
+  min-height: 100vh;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  /* Adicione esta regra CRÍTICA para evitar barras de rolagem laterais indesejadas */
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* =========================== *\
+|        ESTILIZAÇÂO DO         |
+|         MENU DESKTOP          | 
+\* =========================== */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 12vh;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background: transparent;
+  box-shadow: 0 4px 16px -1px var(--esp-shadow),
+    0 2px 4px -2px var(--esp-shadow);
+  background: var(--esp-background);
+  z-index: 3;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 3rem;
+  max-width: 1600px;
+}
+
+.logo img {
+  height: 4rem;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+.navbar-container .navbar-menu {
+  display: flex;
+  text-align: center;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.navbar-container .navbar-menu li a {
+  text-decoration: none;
+  color: var(--esp-roxo6);
+  font-weight: 600;
+  padding: 0.9rem 0.9rem;
+  border-radius: 10px;
+  border-bottom: 4px solid transparent;
+  transition: all 0.7s ease;
+  white-space: nowrap;
+  letter-spacing: 1.5px;
+}
+
+.navbar-container .navbar-menu li a i {
+  font-size: 1.2rem;
+}
+
+.navbar-container .navbar-menu li a:hover {
+  color: var(--esp-roxo3);
+  border-bottom: 4px solid var(--esp-roxo3);
+  box-shadow: 0 2px 8px var(--esp-shadow);
+}
+
+.navbar-toggle {
+  display: none;
+  background: transparent;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.linha {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background: var(--esp-roxo);
+  transition: all 0.3s ease-in-out;
+}
+
+/* --- Layout Wrappers --- */
+.wrapper {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.content-area {
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem; /* px-4, pb-12 */
+  font-size: 5px;
+}
+
+/* Responsividade do Padding (sm:px-8, md:px-16) */
+@media (min-width: 640px) {
+  .content-area {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 768px) {
+  .content-area {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+/* SOMENTE EM TELAS PEQUENAS */
+@media (min-width: 1400px) {
+  .typing-text {
+    white-space: normal !important; /* permite quebra só no mobile */
+    overflow-wrap: break-word;
+    word-break: break-word;
+    font-size: 1.2rem; /* diminui tamanho somente no mobile */
+    line-height: 1.3;
+    text-align: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .typing-text {
+    white-space: normal !important; /* permite quebra só no mobile */
+    overflow-wrap: break-word;
+    word-break: break-word;
+    font-size: 1.2rem; /* diminui tamanho somente no mobile */
+    line-height: 1.3;
+    text-align: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .typing-text {
+    white-space: normal !important; /* permite quebra só no mobile */
+    overflow-wrap: break-word;
+    word-break: break-word;
+    font-size: 1.2rem; /* diminui tamanho somente no mobile */
+    line-height: 1.3;
+    text-align: center;
+  }
+}
+
+@media (min-width: 992px) {
+  .typing-text {
+    white-space: normal !important; /* permite quebra só no mobile */
+    overflow-wrap: break-word;
+    word-break: break-word;
+    font-size: 1.2rem; /* diminui tamanho somente no mobile */
+    line-height: 1.3;
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .typing-text {
+    white-space: normal !important; /* permite quebra só no mobile */
+    overflow-wrap: break-word;
+    word-break: break-word;
+    font-size: 1.2rem; /* diminui tamanho somente no mobile */
+    line-height: 1.3;
+    text-align: center;
+  }
+}
+
+@media (min-width: 640px) {
+  .typing-text {
+    white-space: normal !important; /* permite quebra só no mobile */
+    overflow-wrap: break-word;
+    word-break: break-word;
+    font-size: 1.2rem; /* diminui tamanho somente no mobile */
+    line-height: 1.3;
+    text-align: center;
+  }
+}
+
+@media (min-width: 480px) {
+  .typing-text {
+    white-space: normal !important; /* permite quebra só no mobile */
+    flex-wrap: wrap;
+    font-size: 1.2rem; /* diminui tamanho somente no mobile */
+    line-height: 1.3;
+    text-align: center;
+  }
+}
+
+/* --- Seção de Capa (Hero) --- */
+.hero {
+  position: relative;
+  /* CORREÇÃO 2: Ajuste a altura para que a imagem comece logo abaixo do menu fixo */
+  height: calc(50vh - 5rem);
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 2px 2px 28px var(--esp-shadow); /* Usando variável */
+  border-radius: 0 0 20px 20px;
+  /* Necessário padding-top para compensar o header fixo */
+  /* padding-top: 5rem; */
+}
+
+/* Responsividade da Altura (lg:h-[90vh]) */
+@media (min-width: 1024px) {
+  .hero {
+    height: calc(90vh - 5rem);
+  }
+}
+
+.hero-img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3); /* Simula bg-black bg-opacity-30 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-title {
+  font-size: 2.25rem; /* text-4xl */
+  line-height: 0.05;
+  font-weight: 900; /* font-black */
+  color: white;
+  padding: 1rem;
+  padding-bottom: 1.3rem;
+}
+
+.hero-title2 {
+  font-size: 3.25rem;
+  font-weight: 900; /* font-black */
+  color: white;
+  padding-bottom: 0.5rem;
+}
+
+/* Estilo inicial para a imagem do logo (oculta e pequena) */
+.hero-overlay img#logo-icon {
+  opacity: 0 !important;
+  transform: scale(0.1) !important;
+}
+
+/* NOVO ESTILO: Adicionar a transição de crescimento APENAS para a classe show-and-grow */
+.hero-overlay img#logo-icon.show-and-grow {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+/* NOVO ESTILO: Certifique-se de que a animação (pulso) NÃO tenha transição */
+.hero-overlay img#logo-icon.animate-pulsar {
+  /* Garante que o CSS não aplique transição à pulsação, apenas animação */
+  transition: none;
+}
+
+/* Responsividade do Título (sm:text-5xl, md:text-7xl) */
+@media (min-width: 640px) {
+  .hero-title {
+    font-size: 3rem; /* sm:text-5xl */
+  }
+}
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 4.5rem; /* md:text-7xl */
+  }
+}
+
+.shadowText {
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* drop-shadow-lg */
+}
+
+/* --- Faixa Roxo --- */
+.roxo-stripe {
+  width: 100%;
+  height: 60px;
+  background-color: var(--esp-roxo2);
+  border-radius: 0 0 20px 20px;
+  box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.4);
+  position: relative;
+  margin-top: -60px; /* -mt-[60px] */
+  /* z-index: 1; */
+}
+
+/* ===================================================
+    ESTILOS PARA EFEITO MÁQUINA DE ESCREVER (FINAL FIX)
+    =================================================== */
+
+/* Contêiner das frases (CORRIGIDO: Garante altura e posição) */
+.typing-animation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
+  /* ESSENCIAL: Altura fixa para evitar o colapso do layout */
+  height: 60px; /* Suficiente para uma linha. Ajuste se o texto for maior. */
+  position: relative; /* Permite que os filhos absolutos se posicionem aqui */
+  width: 100%;
+  background: #8454bb57;
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px -1px var(--esp-shadow),
+    0 2px 4px -2px var(--esp-shadow);
+}
+
+.about-section-typescript {
+  padding-top: 1rem;
+}
+
+/* Estilo para cada frase animada (o h2) */
+h2.typing-text {
+  /* Controle de Tamanho e Aparência (Seus estilos originais) */
+  font-size: 1.875rem; /* Base: text-3xl */
+  font-weight: 800;
+  color: #fff;
+  /* ... E A SOMBRA É ROXA ESCURA */
+  text-shadow: 1px 2px 5px #000000e8;
+  text-align: center;
+  margin: 0;
+  /* EFEITO MÁQUINA DE ESCREVER */
+  white-space: nowrap;
+  overflow: hidden;
+  /* POSICIONAMENTO PARA SOBRESCRITA SEGURO */
+  position: absolute; /* Tira do fluxo, mas o pai tem altura fixa */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centraliza perfeitamente */
+  max-width: 90%;
+  /* O JS gerencia o 'display' para o loop de sobrescrita */
+  padding: 0 10px;
+}
+
+/* RESPONSIVIDADE (Mantido) */
+@media (min-width: 640px) {
+  h2.typing-text {
+    font-size: 2.25rem;
+  }
+}
+@media (min-width: 768px) {
+  h2.typing-text {
+    font-size: 3rem;
+  }
+}
+
+/* O CURSOR PISCANTE */
+/* Cria um pseudo-elemento para simular o cursor */
+h2.typing-text::after {
+  content: "|";
+  display: inline-block;
+  margin-left: 5px;
+  animation: blink-caret 0.9s step-end infinite;
+  /* 1. COR DO TRAÇO DO CURSOR (MANTÉM BRANCO) */
+  color: white;
+  /* 2. COR DA SOMBRA (ALTERADA PARA A COR DO SEU SHADOW) */
+  /* Remove a sombra escura e usa a cor da sua variável */
+  text-shadow: 1px 1px 3px #5d009b8f;
+}
+
+h2.typing-text.finished::after {
+  display: none;
+}
+
+/* Animação do Cursor Piscar */
+@keyframes blink-caret {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: white;
+  }
+}
+
+/* --- Seção Sobre/Página Principal --- */
+.about-section2 {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0 0.5rem 0;
+}
+
+.about-section2 img {
+  width: 10rem;
+}
+
+.about-section-projetos,
+.about-section-entrevistas {
+  scroll-margin-top: 120px;
+}
+
+/* CORREÇÃO 3: Restaurando o estilo H2 exato (color: white; text-shadow: #432a9e) */
+.section-title {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+  text-shadow: 1px 2px 5px var(--esp-shadow);
+  text-shadow: 0 0 5px rgba(153, 51, 255, 0.7),
+    /* Camada de brilho suave */ 0 0 10px rgba(153, 51, 255, 0.5),
+    /* Camada de brilho mais difusa */ 0 2px 5px var(--esp-shadow); /* Sombra original para profundidade */
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.section-title-RG,
+.section-title-TS {
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* gap: 0.5rem; */
+  text-align: center;
+  text-shadow: 1px 2px 5px var(--esp-shadow);
+  text-shadow: 0 0 5px rgba(153, 51, 255, 0.7),
+    /* Camada de brilho suave */ 0 0 10px rgba(153, 51, 255, 0.5),
+    /* Camada de brilho mais difusa */ 0 2px 5px var(--esp-shadow); /* Sombra original para profundidade */
+}
+
+.section-title-equipe {
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* gap: 0.5rem; */
+  text-align: center;
+  text-shadow: 1px 2px 5px var(--esp-shadow);
+  text-shadow: 0 0 5px rgba(153, 51, 255, 0.7),
+    /* Camada de brilho suave */ 0 0 10px rgba(153, 51, 255, 0.5),
+    /* Camada de brilho mais difusa */ 0 2px 5px var(--esp-shadow); /* Sombra original para profundidade */
+}
+
+.title-logo {
+  display: flexbox;
+  text-align: center;
+  /* line-height: 2px; */
+}
+
+.paragrafo-text {
+  background: var(--esp-bco);
+  padding: 30px 0 10px 0;
+  margin: 20px 30px 30px 30px;
+  border-radius: 30px;
+  border-top: 5px solid var(--esp-roxo);
+  box-shadow: 0 4px 16px -1px var(--esp-shadow),
+    0 2px 4px -2px var(--esp-shadow); /* Usando variável */
+  font-weight: 600;
+}
+
+/* Responsividade do Título da Seção (sm:text-4xl, md:text-5xl, sm:flex-row) */
+@media (min-width: 640px) {
+  .section-title {
+    font-size: 2.25rem; /* sm:text-4xl */
+    flex-direction: row; /* sm:flex-row */
+  }
+}
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 3rem; /* md:text-5xl */
+  }
+}
+
+.icon-logo {
+  width: 5rem; /* w-20 */
+  height: auto;
+  padding-bottom: 10px;
+}
+
+@media (min-width: 640px) {
+  .icon-logo {
+    width: 10rem; /* sm:w-24 */
+  }
+}
+
+/* Animação */
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(-5%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.animate-ChangeColor {
+  animation: ChangeColor 1s infinite;
+  margin: 0 auto;
+  display: table;
+  animation-direction: alternate;
+  -webkit-animation-name: ChangeColor;
+  animation-name: ChangeColor;
+}
+
+@-webkit-keyframes ChangeColor {
+  0% {
+    -webkit-transform: scale(1);
+    -webkit-filter: brightness(100%);
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+    -webkit-filter: brightness(200%);
+  }
+}
+
+@keyframes ChangeColor {
+  0% {
+    transform: scale(1);
+    filter: brightness(100%);
+  }
+  100% {
+    transform: scale(1.1);
+    filter: brightness(200%);
+  }
+}
+
+@-webkit-keyframes pulsar {
+  0% {
+    -webkit-transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+  }
+}
+
+@keyframes pulsar {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-pulsar {
+  animation: pulsar 1s infinite;
+  animation-direction: alternate;
+  -webkit-animation-name: pulsar;
+  animation-name: pulsar;
+}
+
+/* Slide deslizante de reprodução automática infinito */
+.slider {
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.slide-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Cada item */
+.slide-icon {
+  flex: 0 0 auto;
+  padding: 0 40px; /* espaço horizontal SEM margin */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-icon img {
+  width: 80px;
+  display: block;
+}
+
+/* .slide-icon img:hover {
+  transform: rotateZ(20px);
+} */
+
+/* Sombras Gradientes → Só usar se for em Imagens*/
+/* .slider::before,
+.Slider:after {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  content: "";
+  height: 100%;
+  position: absolute;
+  width: 15%;
+  z-index: 2;
+}
+
+.slider::before {
+  left: 0;
+  top: 0;
+}
+
+.slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+} */
+/* Fim - Sombras Gradientes */
+
+.logo-symbol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+  margin-bottom: 0;
+  opacity: 0.5;
+}
+
+.icon-logo-symbol {
+  width: 130px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Parágrafo de Texto Principal */
+.main-text {
+  font-size: 1.25rem; /* text-xl */
+  line-height: 1.625; /* leading-relaxed */
+  /* margin-top: 1rem; mt-4 */
+  margin: 2rem auto 3rem auto; /* mb-10 */
+  max-width: 64rem; /* max-w-5xl (aproximado) */
+  text-align: center;
+  color: #463672ec;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+/* --- Grid de Cards --- */
+.cards-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* grid-cols-1 (Mobile) */
+  gap: 1.5rem; /* gap-6 */
+  width: 100%;
+  max-width: 84rem; /* max-w-7xl (aproximado) */
+}
+
+/* Responsividade do Grid */
+@media (min-width: 768px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr); /* md: 2 colunas */
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr); /* lg: 3 colunas */
+  }
+}
+
+/* Novo Breakpoint para 4 Colunas (Telas XL / Desktop Grande) */
+@media (min-width: 1280px) {
+  .cards-grid {
+    grid-template-columns: repeat(4, 1fr); /* xl: 4 colunas */
+  }
+}
+
+/* --- Card Individual --- */
+.card-item {
+  border-radius: 30px; /* rounded-lg */
+  padding: 1.5rem 1rem 2rem 1rem; /* p-5 */
+  text-align: center;
+  border-top: 4px solid var(--esp-roxo); /* border-t-4 border-esp-roxo */
+  background-color: white; /* bg-white */
+  box-shadow: 0 4px 16px -1px var(--esp-shadow),
+    0 2px 4px -2px var(--esp-shadow); /* Usando variável */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out,
+    background-color 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-item:hover {
+  transform: translateY(-5px);
+  background-color: #8454bb;
+  box-shadow: 0 8px 20px -1px var(--esp-shadow),
+    0 4px 8px -2px var(--esp-shadow);
+  .card-title {
+    color: #fff;
+    text-shadow: 1px 1px 3px #000;
+  }
+  .card-icon-wrapper {
+    box-shadow: 0 4px 16px -1px #fff, 0 2px 4px -2px #fff;
+  }
+}
+
+/* Contêiner da Imagem */
+.card-icon-wrapper {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border-radius: 20px;
+  box-shadow: 1px 2px 8px #000;
+}
+
+.card-icon-wrapper:hover {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border-radius: 20px;
+}
+
+#jornais {
+  width: 1050px;
+  height: 775px;
+  margin: 2rem auto; /* Centraliza horizontalmente e dá margem vertical */
+  margin-bottom: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px -1px var(--esp-shadow),
+    0 2px 20px -2px var(--esp-shadow);
+  overflow: hidden;
+  /* padding: 2rem; */
+}
+
+.imagens-jornais .Imagem-1,
+.imagens-jornais .Imagem-2,
+.imagens-jornais .Imagem-3 {
+  margin-bottom: 2rem;
+  border-radius: 20px;
+}
+
+/* Ação Crítica: Imagem dentro do contêiner proporcional */
+.card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 10px 20px -1px var(--esp-shadow);
+}
+
+.card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--esp-roxo);
+  text-align: center;
+  justify-content: center;
+  flex-grow: 1;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.card-link {
+  display: inline-block;
+  text-align: center;
+  margin: auto 22% 0 22%;
+  transition: border-bottom-color 0.3s ease;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px 25px;
+  color: #5d009b;
+  border-radius: 10px;
+  background: #f4f4f4;
+  cursor: pointer;
+  border: none;
+  transition: 0.4s all ease-in-out;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  box-shadow: 0 1px 3px #000000b0;
+}
+
+.card-link:hover {
+  transform: scale(1.03);
+  background-color: #470f86;
+  color: #fff;
+  text-shadow: 0px 2px 4px #000;
+  box-shadow: 0 4px 16px -1px #fff, 0 2px 4px -2px #fff;
+}
+
+#card-link-jornal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =============================
+  6. SEÇÃO EQUIPE
+  ============================= */
+/* Note: Se o seu HTML usa #team ao invés de #equipe-page,
+   mantenha #team como o seletor principal da seção. */
+#team,
+#equipe-page {
+  /* Corrigido para garantir que o conteúdo comece abaixo do header fixo */
+  padding-top: 5rem;
+  min-height: 70vh;
+}
+
+/* 1. Estilos do Cartão do Membro (member-card) para ALINHAR ÍCONE */
+.member-card {
+  text-align: center;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 16px -1px var(--esp-shadow),
+    0 2px 4px -2px var(--esp-shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  /* ✅ ATUALIZAÇÃO 1: Flexbox para alinhamento vertical */
+  display: flex;
+  flex-direction: column;
+}
+
+.member-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 20px -1px var(--esp-shadow);
+}
+
+.member-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  border: 4px solid var(--esp-roxo2);
+}
+
+.member-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--esp-roxo-opaco);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  min-height: 3rem; /* Ajuda a estabilizar o nome se ele quebrar em duas linhas */
+}
+
+.member-role {
+  font-size: 0.95rem;
+  color: var(--esp-text-gray);
+  line-height: 1.5;
+
+  /* ✅ ATUALIZAÇÃO 2: Permite que o texto da biografia cresça
+     e empurre o ícone para a base do cartão */
+  flex-grow: 1;
+  margin-bottom: 0.5rem;
+}
+
+/* Grid da Primeira Linha (4 membros) */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* --- Grid da Segunda Linha (3 membros) --- */
+.team-grid2 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Padrão Mobile */
+  gap: 2rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem; /* Adiciona espaço abaixo da segunda grade */
+}
+
+/* 2. Responsividade para Telas Médias (2 colunas) */
+@media (min-width: 640px) {
+  .team-grid2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 3. Responsividade para Telas Grandes (4 Colunas) - A CHAVE PARA O CENTRO */
+@media (min-width: 1024px) {
+  .team-grid2 {
+    /* Define o layout de 4 colunas, mas usa Flexbox para o contêiner */
+    display: flex; /* ✅ ATUALIZAÇÃO 3: Mude para Flexbox para usar justify-content */
+    flex-wrap: wrap;
+    justify-content: center; /* ✅ ATUALIZAÇÃO 4: CENTRALIZA os 3 itens */
+    gap: 2rem; /* Mantém o espaçamento entre os cartões */
+  }
+
+  /* Define a largura de cada membro na .team-grid2 para ser 1/4 (menos o espaçamento) */
+  .team-grid2 .member-card {
+    /* Calcula 1/4 da largura total, subtraindo a maior parte do espaçamento. */
+    width: calc(25% - 1.5rem);
+    max-width: 300px;
+  }
+}
+
+/* --- Ícone na Base do Cartão --- */
+.logo-symbol-equipe {
+  /* Garante que o contêiner do ícone não cresça e fique sempre na base */
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  /* align-items: flex-end; Removido pois display: flex no .member-card já o empurra para baixo */
+  align-items: center;
+  padding-top: 2rem;
+  margin-bottom: 0;
+  opacity: 0.8;
+}
+
+.icon-logo-symbol-equipe {
+  width: 50px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.member-card {
+  text-align: center;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 16px -1px var(--esp-shadow),
+    0 2px 4px -2px var(--esp-shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.member-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 20px -1px var(--esp-shadow);
+}
+
+.member-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  border: 4px solid var(--esp-roxo2);
+  filter: grayscale(10%);
+}
+
+.member-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--esp-roxo);
+  margin-bottom: 0.25rem;
+}
+
+.member-role {
+  font-size: 1rem;
+  color: var(--esp-text-gray);
+  font-weight: 500;
+}
+
+/* =============================
+    SEÇÃO VIRTUDES NA MÍDIA
+   ============================= */
+.card-icon-wrapper-jornais {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border-radius: 20px;
+  box-shadow: 1px 2px 8px #000;
+}
+
+#jornais {
+  box-shadow: none;
+  box-shadow: 0 4px 16px -1px var(--esp-shadow),
+    0 2px 20px -2px var(--esp-shadow);
+}
+
+.card-icon-wrapper-jornais {
+  width: 1050px;
+  height: 775px;
+  padding: 2rem;
+  /* margin-bottom: 3rem; */
+  border-radius: 20px;
+}
+
+.link-jornal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
+.cards-wrapper-jornal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Ação Crítica: Imagem dentro do contêiner proporcional */
+.card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 10px 20px -1px var(--esp-shadow);
+}
+
+.card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--esp-roxo);
+  text-align: center;
+  justify-content: center;
+  flex-grow: 1;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.imagens-jornais img {
+  width: 700px;
+}
+
+@media (max-width: 1024px) {
+  .card-icon-wrapper-jornais {
+    width: 880px;
+    height: 620px;
+    padding: 2rem;
+    /* margin-bottom: 3rem; */
+    border-radius: 20px;
+  }
+  #jornais {
+    width: 880px;
+    height: 620px;
+  }
+}
+
+@media (max-width: 992px) {
+  .card-icon-wrapper-jornais {
+    width: 880px;
+    height: 620px;
+    padding: 2rem;
+    /* margin-bottom: 3rem; */
+    border-radius: 20px;
+  }
+  #jornais {
+    width: 880px;
+    height: 620px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-icon-wrapper-jornais {
+    width: 670px;
+    height: 480px;
+    padding: 2rem;
+    /* margin-bottom: 3rem; */
+    border-radius: 20px;
+  }
+  #jornais {
+    width: 670px;
+    height: 480px;
+  }
+  .imagens-jornais img {
+    width: 600px;
+  }
+}
+
+@media (max-width: 640px) {
+  .card-icon-wrapper-jornais {
+    width: 570px;
+    height: 400px;
+    padding: 2rem;
+    /* margin-bottom: 3rem; */
+    border-radius: 20px;
+  }
+  #jornais {
+    width: 570px;
+    height: 400px;
+  }
+  .imagens-jornais img {
+    width: 520px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-icon-wrapper-jornais {
+    width: 380px;
+    height: 280px;
+    padding: 2rem;
+    /* margin-bottom: 3rem; */
+    border-radius: 20px;
+  }
+  #jornais {
+    width: 380px;
+    height: 280px;
+  }
+  .imagens-jornais img {
+    width: 390px;
+  }
+}
+
+@media (max-width: 320px) {
+  .card-icon-wrapper-jornais {
+    width: 290px;
+    height: 210px;
+    padding: 2rem;
+    /* margin-bottom: 3rem; */
+    border-radius: 20px;
+  }
+  #jornais {
+    width: 290px;
+    height: 210px;
+  }
+  .modal-info {
+    max-width: 80px;
+  }
+  .imagens-jornais img {
+    width: 240px;
+  }
+}
+
+/* =============================
+    SEÇÃO ENTREVISTAS
+   ============================= */
+.div-video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  gap: 5%;
+}
+
+.video1 iframe,
+.video2 iframe {
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  width: 718px;
+  height: 405px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px #000;
+  transition: transform 0.5s ease-in-out;
+}
+
+.video1:hover iframe,
+.video2:hover iframe {
+  transform: scale(1.03);
+  box-shadow: 4px 4px 16px var(--esp-shadow);
+}
+
+/* =============================
+    SEÇÃO REGISTROS DE ENCONTROS (Carrossel com Inputs/Labels)
+   ============================= */
+.content2 {
+  width: 1050px;
+  height: 635px;
+  margin: 2rem auto; /* Centraliza horizontalmente e dá margem vertical */
+  margin-bottom: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px -1px var(--esp-shadow),
+    0 2px 20px -2px var(--esp-shadow);
+  overflow: hidden;
+}
+
+/* Container de Navegação (Dots/Barras) */
+.navigation {
+  position: relative;
+  bottom: 60px; /* Posiciona os dots sobre a imagem */
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* Estilo Base dos Dots/Barras */
+.bar {
+  width: 15px;
+  height: 15px;
+  border: 1px solid #fff;
+  background: #ffffff85; /* Cor cinza/branca transparente */
+  margin: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 2px 2px 16px #000;
+  transition: 0.3s ease-in-out;
+}
+
+/* Efeito de Hover nas Barras */
+.bar:hover {
+  background: #fff;
+  box-shadow: 2px 2px 16px #fff;
+}
+
+.slides {
+  display: flex;
+  width: 500%; /* 5 slides * 100% */
+  height: 100%;
+}
+
+/* Esconde os Radio Buttons (Inputs) */
+.slides input {
+  display: none;
+}
+/* Ou, se os inputs foram movidos para fora de .slides (como recomendado): */
+.content2 > input[type="radio"] {
+  display: none;
+}
+
+/* Cada Slide */
+.slide {
+  width: 20%; /* 100% / 5 slides = 20% */
+  transition: 1s; /* Tempo da transição ao mudar de slide */
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  /* Garante que a imagem preencha o slide sem distorção, se necessário: */
+  /* object-fit: cover; */
+}
+
+/* ----------------------------------------------------------------- */
+/* Lógica de Transição de Slides (Movimento Horizontal) */
+/* ----------------------------------------------------------------- */
+/* Move o primeiro slide (.s1) para a esquerda para alinhar o slide correto */
+
+#slide1:checked ~ .slides .s1 {
+  margin-left: 0;
+}
+
+#slide2:checked ~ .slides .s1 {
+  margin-left: -20%; /* Move 1 slide (100% / 5) */
+}
+
+#slide3:checked ~ .slides .s1 {
+  margin-left: -40%; /* Move 2 slides */
+}
+
+#slide4:checked ~ .slides .s1 {
+  margin-left: -60%; /* Move 3 slides */
+}
+
+#slide5:checked ~ .slides .s1 {
+  margin-left: -80%; /* Move 4 slides */
+}
+
+/* Aplica o estilo na barra (label) cujo input (radio button) está checado */
+#slide1:checked ~ .navigation .bar[for="slide1"],
+#slide2:checked ~ .navigation .bar[for="slide2"],
+#slide3:checked ~ .navigation .bar[for="slide3"],
+#slide4:checked ~ .navigation .bar[for="slide4"],
+#slide5:checked ~ .navigation .bar[for="slide5"] {
+  background-color: #470f86; /* Roxo desejado */
+  box-shadow: 0px 0px 16px 5px #fff;
+  border-color: #470f86;
+}
+
+/* Garante que o hover não desfaça o destaque na barra ativa */
+#slide1:checked ~ .navigation .bar[for="slide1"]:hover,
+#slide2:checked ~ .navigation .bar[for="slide2"]:hover,
+#slide3:checked ~ .navigation .bar[for="slide3"]:hover,
+#slide4:checked ~ .navigation .bar[for="slide4"]:hover,
+#slide5:checked ~ .navigation .bar[for="slide5"]:hover {
+  background: #7a00ff;
+  box-shadow: 0 0 10px #7a00ff;
+}
+
+/* Container principal do carrossel */
+.carrossel {
+  max-width: 1200px; /* Limita a largura total do carrossel */
+  margin: 0 auto; /* Centraliza */
+  padding: 1rem;
+}
+
+/* Imagem Grande (Visualização Principal) */
+.fotos-e-acoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  position: relative; /* Ajustado para lidar com z-index de forma mais previsível */
+  z-index: 1; /* Garante que a imagem grande esteja na frente do fundo */
+}
+
+.fotos-e-acoes img {
+  max-width: 100%; /* Torna a imagem grande responsiva */
+  height: auto; /* Mantém a proporção */
+  border-radius: 15px;
+  box-shadow: 4px 4px 16px var(--esp-shadow);
+  display: block; /* Remove espaços extras abaixo da imagem */
+}
+
+/* Miniaturas (Imagens de Baixo) */
+.fotos {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Reduzi o gap para as imagens ficarem mais próximas */
+  margin-top: -20px; /* Sobe as imagens de baixo para "cobrir" a grande */
+  margin-bottom: 0;
+  position: relative;
+  z-index: 2; /* Garante que as miniaturas fiquem por cima da imagem grande */
+  padding: 0 10px; /* Pequeno padding para evitar que as bordas cortem em telas muito pequenas */
+}
+
+/* Contêiner de cada miniatura */
+.imagem-container {
+  flex: 1; /* Permite que os contêineres de imagem se expandam igualmente */
+  max-width: 30%; /* Limita a largura para 30% do espaço disponível */
+  overflow: visible; /* CRÍTICO: Permite que o hover extrapole os limites do pai */
+  position: relative; /* Necessário para z-index do hover */
+  display: flex; /* Para centralizar a imagem dentro do container se ela for menor */
+  justify-content: center;
+  align-items: center;
+}
+
+.fotos img {
+  max-width: 100%; /* Torna as miniaturas responsivas */
+  height: auto; /* Mantém a proporção */
+  border-radius: 15px;
+  box-shadow: 2px 2px 10px #000;
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out, opacity 0.3s ease,
+    box-shadow 0.3s ease-in-out;
+  opacity: 0.8; /* Opacidade inicial mais sutil */
+  display: block;
+}
+
+/* Efeito de Hover */
+.imagem-container:hover .imagem1 {
+  transform: translateY(-20px) translateX(15%) scale(1.08); /* Sobe um pouco e aumenta */
+  opacity: 1;
+  box-shadow: 0 4px 16px -1px #0a3d62, 0 2px 4px -2px #1778f2;
+  z-index: 3; /* Garante que a imagem em hover esteja na frente de outras miniaturas */
+}
+
+.imagem-container:hover .imagem2 {
+  transform: translateY(-30px) scale(1.08); /* Sobe mais a imagem do meio */
+  opacity: 1;
+  box-shadow: 0 4px 16px -1px #0a3d62, 0 2px 4px -2px #1778f2;
+  z-index: 3;
+}
+
+.imagem-container:hover .imagem3 {
+  transform: translateY(-20px) translateX(-15%) scale(1.08); /* Sobe um pouco e aumenta */
+  opacity: 1;
+  box-shadow: 0 4px 16px -1px #0a3d62, 0 2px 4px -2px #1778f2;
+  z-index: 3; /* Garante que a imagem em hover esteja na frente de outras miniaturas */
+}
+
+/* Ajustes de responsividade para telas menores */
+@media (max-width: 768px) {
+  .fotos {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 10px;
+  }
+  .imagem-container {
+    max-width: 80%;
+  }
+  .fotos img {
+    opacity: 1;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  .imagem-container:hover .imagem1,
+  .imagem-container:hover .imagem2,
+  .imagem-container:hover .imagem3 {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* =============================
+    SEÇÃO FALE CONOSCO (CONTACT)
+   ============================= */
+
+.contact {
+  text-align: center;
+  --cor-clara: var(--esp-background); /* #f9f9f9 */
+  --cor-roxo-base: #540085; /* Roxo opaco do footer/variável ajustada */
+  margin-top: 0.5rem;
+  background: transparent !important;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+  border: 1.5px solid #6d00ace4; /* Cor da borda ao focar */
+  outline: none; /* Remove o contorno padrão do navegador */
+  box-shadow: 0 0 6px #6d00ace4; /* (Opcional) brilho suave da mesma cor */
+  background: #f7f7f7 !important;
+}
+
+.contact input,
+.contact textarea {
+  margin: 0.5em 0;
+  padding: 1em;
+  border: 1px solid #ccc;
+  background: #f7f7f7 !important;
+  border-radius: 10px;
+}
+
+.contact button {
+  /* background-color: #004085e4; */
+  background-color: #5d009bc0;
+  color: white;
+  font-weight: 500;
+  margin: 1rem 0;
+  margin-bottom: 3rem;
+  padding: 1em;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 1px 1px 8px #000000af;
+}
+
+.contact button:hover {
+  background-color: #470f86;
+  color: #fff;
+  text-shadow: 0px 2px 4px #000;
+  box-shadow: 0 4px 16px -1px #fff, 0 2px 4px -2px #fff;
+}
+
+/* =============================
+    SEÇÃO SOCIAL MEDIA (CORREÇÃO FINAL)
+    ============================= */
+.social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* 1. ESTILO DO CONTÊINER (O CÍRCULO GRANDE) */
+.social-links a {
+  /* **TAMANHO DO CÍRCULO (MAIOR)** */
+  width: 3rem;
+  height: 3rem;
+
+  /* **TAMANHO DO ÍCONE (APLICADO AO PAI PARA HERANÇA)** */
+  font-size: 2.2rem; /* O ícone <i> vai herdar este tamanho */
+  color: #5d009ba4; /* Cor inicial do ícone (branco) */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background-color: transparent;
+  box-shadow: 0 0 0 3px transparent;
+
+  margin: 10px;
+  margin-bottom: 30px;
+
+  transition: transform 0.3s ease-in-out;
+}
+
+/* 2. ESTILO DO ÍCONE (A HERANÇA E GARANTIA) */
+/* Garante que o ícone use a cor e tamanho do pai. */
+.social-links a i {
+  color: inherit; /* Herda a cor branca do <a> */
+  font-size: inherit; /* Herda o tamanho do <a> */
+}
+
+/* 3. EFEITO HOVER */
+.social-links a:hover {
+  transform: scale(1.05);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+
+/* 4. CORES ESPECÍFICAS DE BACKGROUND NO HOVER */
+/* As cores são aplicadas ao background do círculo `<a>` */
+
+/* Certifique-se de que no seu HTML os links tenham as classes:
+   <a class="facebook">, <a class="instagram">, <a class="whatsapp">, <a class="email"> */
+
+.social-links a.facebook:hover {
+  background-color: #1778f2;
+  box-shadow: 0 0 0 1px #1778f2, 1px 1px 10px #000;
+}
+
+.social-links a.instagram:hover {
+  background-color: #8a3ab9;
+  box-shadow: 0 0 0 1px #8a3ab9, 1px 1px 10px #000;
+}
+
+.social-links a.whatsapp:hover {
+  background-color: #1ebb58;
+  box-shadow: 0 0 0 1px #1ebb58, 1px 1px 10px #000;
+}
+
+.social-links a.email:hover {
+  background-color: #da1e37;
+  box-shadow: 0 0 0 1px #da1e37, 1px 1px 10px #000;
+}
+
+.insta-camila,
+.insta-rodrigo {
+  cursor: pointer;
+  text-decoration: none;
+  color: #5d009b;
+  padding: 0;
+  margin: 0;
+  transition: 0.5s ease;
+}
+
+.insta-camila:hover,
+.insta-rodrigo:hover {
+  transform: scale(1.03);
+}
+
+.mila_dani,
+.rodrigo.pedrodias {
+  color: #5d009b;
+  text-decoration: none;
+}
+
+/* =============================
+   6. SEÇÃO FOOTER
+   ============================= */
+.footer-text {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.footer {
+  background-color: #2e0a57c7; /* Cor opaca */
+  color: white;
+  width: 100vw; /* Usar largura da viewport (100vw) para garantir que vá de ponta a ponta */
+  padding: 1rem 0;
+  margin: 0;
+  box-shadow: 4px 4px 16px #2e0a57, 2px 2px 20px #2e0a57;
+}
+
+.footer-container {
+  max-width: 1200px; /* Limita o conteúdo (textos de copyright) */
+  margin: 0 auto; /* Centraliza o conteúdo dentro da largura total */
+  padding: 0 1rem; /* Adiciona um padding nas laterais SÓ para o texto não encostar nas bordas */
+  text-align: center;
+}
+
+/* =============================
+    ESTILOS PARA OS MODAIS
+   ============================= */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: -100%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 80%;
+  max-width: 1280px;
+  height: auto;
+  max-height: 95vh;
+  background-color: #2e0a57;
+  box-shadow: 0 4px 16px -1px var(--esp-shadow),
+    0 2px 20px -2px var(--esp-shadow);
+  border-radius: 20px;
+  overflow: auto;
+  transition: left 0.55s ease-in-out, transform 0.55s ease-in-out;
+  margin-top: 3rem;
+}
+
+/* Quando o modal está ativo (aberto) */
+.modal.show {
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-content {
+  padding: 40px;
+  text-align: center;
+  max-height: 680px;
+}
+
+.modal-content p {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.modal-content h3 {
+  margin-bottom: 16px;
+}
+
+.imagens img {
+  border-radius: 12px;
+  margin-left: 50px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.modal-content2 {
+  display: flex;
+  justify-content: center; /* Centralizando o conteúdo flex */
+  align-items: center;
+  flex-wrap: wrap; /* Adicionando flex-wrap para melhor responsividade */
+}
+
+.modal .modal-content .modal-info {
+  text-shadow: 0 1px 3px #000;
+  font-weight: 600;
+  color: #fff;
+}
+
+.modal .modal-content .modal-info .aspas {
+  color: #1ebb58;
+  font-weight: 750;
+}
+
+.modal .modal-content .imagens img {
+  width: 300px;
+  height: 150px;
+}
+
+.modal .modal-content img.icons-list {
+  width: 80px;
+  animation: quicar 2.5s ease infinite;
+}
+
+/* Animação dos icones do .modal .modal-content img.icons-list */
+@keyframes quicar {
+  0%,
+  100% {
+    transform: translateY(-5%);
+  }
+  50% {
+    transform: translateY(5%);
+  }
+}
+
+/* Botão de fechar */
+.close-btn {
+  background-color: #fff;
+  color: #da1e37;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 3px 10px #525252a6;
+  text-shadow: 0px 1px 2px #000;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 15px;
+  margin: 0;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  background-color: #da1e37;
+  color: #f4f4f4;
+  opacity: 0.9;
+  text-shadow: 0px 2px 3px #000;
+}
+
+/* Título do modal */
+.modal-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0px 2px 4px #000;
+}
+
+/* Informação dentro do modal */
+.modal-info {
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: left;
+  margin-left: 2rem;
+  color: #f4f4f4;
+}
+
+/* Estilos para a Modal de sucesso (Modal2) */
+.modal2 {
+  display: none;
+  position: fixed;
+  z-index: 1010;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+  /* Adicionando transição simples para o overlay */
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+/* Quando o modal2 está ativo (aberto) */
+.modal2.show {
+  display: block;
+  opacity: 1;
+}
+
+/* Conteúdo da modal de sucesso */
+.modal2-content {
+  background-color: #fffafa;
+  box-shadow: 1px 3px 10px #525252a6;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  position: relative; /* Necessário para posicionar close-btn2 */
+}
+
+/* Estilos do botão de fechar (Modal2) */
+.close-btn2 {
+  color: #000;
+  font-size: 25px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  padding: 0.5px 8px;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+  box-shadow: 1px 3px 10px #525252a6;
+  text-shadow: none;
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Adicionando a transição de escala */
+}
+
+.close-btn2:hover,
+.close-btn2:focus {
+  color: #fff;
+  background-color: #da1e37;
+  transform: scale(1.08);
+  text-decoration: none;
+  opacity: 0.9;
+  box-shadow: 1px 3px 10px #525252a6;
+}
+
+/* ========================== *\
+|       RESPONSIVIDADES        |
+*\ ========================== */
+/* 1400px */
+/* @media (max-width: 1400px) {
+  } */
+
+/* =============================== *\
+|      RESPONSIVIDADE 1400px        |
+*\ =============================== */
+@media (max-width: 1400px) {
+  .hero-overlay h1 {
+    font-size: 75px;
+  }
+  .hero-overlay h2 {
+    font-size: 67px;
+  }
+  .hero-overlay img#logo-icon {
+    width: 170px;
+    margin: 0;
+  }
+
+  .typing-text-background h2 {
+    font-size: 40px;
+  }
+
+  .section-title-RG,
+  .section-title-TS,
+  .section-title {
+    font-size: 47px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .logo-symbol {
+    padding: 0;
+  }
+  #logo-icon {
+    width: 110px;
+    height: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .slider img {
+    width: 85px;
+  }
+  .slide-icon {
+    padding: 0 55px;
+  }
+
+  .card-link {
+    font-size: 14px;
+  }
+  .div-video {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .content2 {
+    width: 900px;
+    height: 500px;
+    border-radius: 18px;
+  }
+
+  #logo-icon2 {
+    width: 12rem;
+  }
+}
+
+/* =============================== *\
+|      RESPONSIVIDADE 1200px        |
+*\ =============================== */
+@media (max-width: 1200px) {
+  .typing-animation-container .typing-text {
+    width: max-content;
+  }
+
+  .hero-overlay h1 {
+    font-size: 70px;
+  }
+  .hero-overlay h2 {
+    font-size: 62px;
+  }
+  .hero-overlay img#logo-icon {
+    width: 160px;
+    margin: 0;
+  }
+
+  .typing-text-background h2 {
+    font-size: 37px;
+  }
+
+  .section-title-RG,
+  .section-title-TS,
+  .section-title {
+    font-size: 47px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .paragrafo-text {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 35px;
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+
+  .logo-symbol {
+    padding: 0;
+  }
+  #logo-icon {
+    width: 100px;
+    height: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .slider img {
+    width: 75px;
+  }
+  .slide-icon {
+    padding: 0 45px;
+  }
+
+  .content2 {
+    width: 900px;
+    height: 500px;
+    border-radius: 18px;
+  }
+
+  #logo-icon2 {
+    width: 12rem;
+  }
+}
+
+/* =============================== *\
+|      RESPONSIVIDADE 1024px        |
+*\ =============================== */
+@media (max-width: 1024px) {
+  .logo img {
+    width: 6rem;
+    height: auto;
+    margin-right: 0.5rem;
+  }
+  .navbar-container .navbar-menu {
+    font-size: 0.8rem;
+    gap: 0.5rem !important;
+  }
+
+  .navbar-container .navbar-menu li a i {
+    font-size: 0.8rem;
+  }
+
+  .hero-overlay h1 {
+    font-size: 60px;
+  }
+  .hero-overlay h2 {
+    font-size: 52px;
+  }
+  .hero-overlay img#logo-icon {
+    width: 130px;
+    margin: 0;
+  }
+  .section-title-RG,
+  .section-title-TS,
+  .section-title {
+    font-size: 47px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .paragrafo-text {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 35px;
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+
+  .logo-symbol {
+    padding: 0;
+  }
+  #logo-icon {
+    width: 95px;
+    height: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .slider img {
+    width: 70px;
+  }
+  .slide-icon {
+    padding: 0 40px;
+  }
+  #logo-icon2 {
+    width: 12rem;
+  }
+
+  .card-link {
+    font-size: 15px;
+    padding: 11px;
+  }
+  .content2 {
+    max-width: 70%;
+  }
+  .about-section2 img {
+    padding: 1rem 0 0.2rem 0;
+  }
+  .typing-text-background h2 {
+    font-size: 40px;
+  }
+  .content2 {
+    width: 950px;
+    height: 435px;
+    border-radius: 20px;
+  }
+}
+
+/* =============================== *\
+|       RESPONSIVIDADE 992px        |
+*\ =============================== */
+@media (max-width: 992px) {
+  .navbar {
+    backdrop-filter: none;
+  }
+  .navbar-container .navbar-menu {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.7rem !important;
+    position: absolute;
+    height: 100vh;
+    width: 250px;
+    top: 0;
+    right: 0;
+    padding: 5rem 1.5rem;
+    box-shadow: 0 4px 16px -1px var(--esp-shadow),
+      0 2px 4px -2px var(--esp-shadow);
+    backdrop-filter: blur(30px);
+  }
+  .navbar-container .navbar-menu.active {
+    display: flex;
+  }
+  .navbar-toggle {
+    display: block;
+    z-index: 7;
+  }
+  .navbar-container .navbar-menu {
+    padding-top: 25%;
+  }
+  .navbar-container .navbar-menu li {
+    padding-top: 10%;
+  }
+  .navbar-container .navbar-menu li a {
+    color: var(--esp-bco);
+    text-shadow: 1px 1px 3px var(--esp-textShadow-roxo);
+    font-size: 1.2rem;
+  }
+  .navbar-container .navbar-menu li a:hover {
+    background: var(--esp-bco);
+    text-shadow: none;
+    font-size: 1.2rem;
+  }
+  .navbar-container .navbar-menu li a i {
+    font-size: 1.2rem;
+  }
+  .navbar-container .navbar-toggle.active {
+    box-shadow: 0 0 10px 2px var(--esp-bg-button);
+    border-radius: 8px;
+  }
+  .navbar-toggle.active .linha:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    box-shadow: 0 0 5px var(--esp-textShadow-roxo);
+  }
+  .navbar-toggle.active .linha:nth-child(2) {
+    opacity: 0;
+  }
+  .navbar-toggle.active .linha:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    box-shadow: -1px -1px 3px var(--esp-textShadow-roxo);
+  }
+
+  #home-page {
+    padding-bottom: 15px;
+  }
+  .hero {
+    height: 470px;
+  }
+  .hero-overlay img#logo-icon {
+    width: 130px;
+    margin: 0;
+  }
+  .roxo-stripe {
+    height: 55px;
+    margin-top: -55px;
+  }
+  .hero-overlay h1 {
+    font-size: 50px;
+  }
+  .hero-overlay h2 {
+    font-size: 42px;
+  }
+
+  .typing-text-background h2 {
+    font-size: 37px;
+  }
+  .typing-text-background h2 {
+    font-size: 39px;
+  }
+
+  .section-title-RG,
+  .section-title-TS,
+  .section-title {
+    font-size: 43px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .paragrafo-text {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 35px;
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+
+  .logo-symbol {
+    padding: 0;
+  }
+  #logo-icon {
+    width: 90px;
+    height: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .slider img {
+    width: 65px;
+  }
+  .slide-icon {
+    padding: 0 35px;
+  }
+
+  .div-video {
+    flex-direction: column; /* Fica uma coluna */
+    align-items: center; /* Centraliza os vídeos */
+    gap: 2rem;
+    margin: 0.5rem;
+  }
+  .video1 iframe,
+  .video2 iframe {
+    width: 660px;
+    height: 370px;
+    margin: 0 auto;
+    margin-bottom: 0.3rem;
+    border-radius: 15px; /* Menor borda para não exagerar */
+  }
+
+  #logo-icon2 {
+    width: 10rem;
+  }
+
+  .content2 {
+    width: 950px;
+    height: 450px;
+    border-radius: 18px;
+  }
+
+  .modal-content2 {
+    flex-direction: column;
+  }
+  .modal-info {
+    margin-left: 0;
+    text-align: center;
+  }
+  .imagens img {
+    margin: 20px;
+    margin-left: 0;
+  }
+  .modal {
+    width: 95%;
+  }
+
+  .modal-info {
+    text-align: left;
+  }
+  .modal .modal-content img.icons-list {
+    width: 80px;
+  }
+}
+
+/* =============================== *\
+|       RESPONSIVIDADE 768px        |
+*\ =============================== */
+@media (max-width: 768px) {
+  #home-page {
+    padding-bottom: 15px;
+  }
+  .hero {
+    height: 420px;
+  }
+  .hero-overlay img#logo-icon {
+    width: 100px;
+    margin: 0;
+  }
+  .roxo-stripe {
+    height: 45px;
+    margin-top: -45px;
+  }
+  .hero-overlay h1 {
+    font-size: 45px;
+  }
+  .hero-overlay h2 {
+    font-size: 37px;
+  }
+
+  .typing-text-background h2 {
+    font-size: 32px;
+  }
+
+  .section-title-RG,
+  .section-title-TS,
+  .section-title {
+    font-size: 40px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .paragrafo-text {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 35px;
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+
+  .logo-symbol {
+    padding: 0;
+  }
+  #logo-icon {
+    width: 80px;
+    height: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .slider img {
+    width: 60px;
+  }
+  .slide-icon {
+    padding: 0 32px;
+  }
+
+  .div-video {
+    flex-direction: column; /* Fica uma coluna */
+    align-items: center; /* Centraliza os vídeos */
+    gap: 2rem;
+    margin: 0.5rem;
+  }
+  .video1 iframe,
+  .video2 iframe {
+    width: 630px;
+    height: 370px;
+    margin: 0 auto;
+    margin-bottom: 0.3rem;
+    border-radius: 15px; /* Menor borda para não exagerar */
+  }
+
+  #logo-icon2 {
+    width: 10rem;
+  }
+
+  .content2 {
+    width: 950px;
+    height: 335px;
+    border-radius: 18px;
+  }
+
+  .modal-content2 {
+    flex-direction: column;
+  }
+  .modal-info {
+    margin-left: 0;
+    text-align: center;
+  }
+  .imagens img {
+    margin: 20px;
+    margin-left: 0;
+  }
+  .modal {
+    width: 95%;
+  }
+
+  .modal-info {
+    text-align: left;
+  }
+  .modal .modal-content img.icons-list {
+    width: 75px;
+  }
+}
+
+/* =============================== *\
+|       RESPONSIVIDADE 640px        |
+*\ =============================== */
+@media (max-width: 640px) {
+  #home-page {
+    padding-bottom: 15px;
+  }
+  .hero {
+    height: 370px;
+  }
+  .hero-overlay img#logo-icon {
+    width: 85px;
+    margin: 0;
+  }
+  .roxo-stripe {
+    height: 45px;
+    margin-top: -45px;
+  }
+  .hero-overlay h1 {
+    font-size: 40px;
+  }
+  .hero-overlay h2 {
+    font-size: 32px;
+  }
+
+  .typing-text-background h2 {
+    font-size: 27px;
+  }
+
+  .content2 {
+    width: 850px;
+    height: 285px;
+    border-radius: 14px;
+  }
+
+  .section-title-RG,
+  .section-title-TS,
+  .section-title {
+    font-size: 35px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .paragrafo-text {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 35px;
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+
+  .logo-symbol {
+    padding: 0;
+  }
+  #logo-icon {
+    width: 70px;
+    height: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .slider img {
+    width: 55px;
+  }
+  .slide-icon {
+    padding: 0 29px;
+  }
+
+  .div-video {
+    margin: 0.5rem;
+  }
+  .video1 iframe,
+  .video2 iframe {
+    width: 550px;
+    height: 307px;
+    margin: 0 auto;
+    margin-bottom: 0.3rem;
+    border-radius: 15px; /* Menor borda para não exagerar */
+  }
+
+  #logo-icon2 {
+    width: 9rem;
+  }
+
+  .social-links {
+    gap: 4rem;
+  }
+  .social-links a {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 2rem;
+  }
+
+  .modal-info {
+    text-align: left;
+  }
+  .modal .modal-content img.icons-list {
+    width: 70px;
+  }
+}
+
+/* =============================== *\
+|       RESPONSIVIDADE 480px        |
+*\ =============================== */
+@media (max-width: 480px) {
+  #home-page {
+    padding-bottom: 15px;
+  }
+  .hero {
+    height: 230px;
+  }
+  .hero-title {
+    line-height: 0;
+    margin-top: 18%;
+  }
+  .hero-title2 {
+    margin-top: 0;
+  }
+  .hero-overlay img#logo-icon {
+    width: 70px;
+    padding: 0 0 40px 0;
+    margin: 0;
+  }
+  .roxo-stripe {
+    height: 33px;
+    margin-top: -30px;
+  }
+  .hero-overlay h1 {
+    font-size: 27px;
+  }
+  .hero-overlay h2 {
+    font-size: 20px;
+  }
+
+  .typing-text-background h2 {
+    font-size: 25px;
+  }
+  .typing-text {
+    white-space: normal !important; /* permite quebra só no mobile */
+    flex-wrap: wrap;
+    font-size: 1.5rem; /* diminui tamanho somente no mobile */
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .section-title-RG,
+  .section-title-TS,
+  .section-title {
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .paragrafo-text {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 35px;
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+
+  .logo-symbol {
+    padding: 0;
+  }
+
+  #logo-icon {
+    width: 60px;
+    height: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .slider img {
+    width: 45px;
+  }
+  .slide-icon {
+    padding: 0 27px;
+  }
+
+  .cards-wrapper {
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    margin: 1%;
+  }
+  .cards-grid {
+    margin-top: 16px;
+  }
+
+  .div-video {
+    margin: 0.5rem;
+  }
+  .video1 iframe,
+  .video2 iframe {
+    width: 370px;
+    height: 207px;
+    margin: 0 auto;
+    margin-bottom: 0.3rem;
+    border-radius: 15px; /* Menor borda para não exagerar */
+  }
+  .content2 {
+    width: 850px;
+    height: 195px;
+    margin: 1rem auto;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+  }
+  .bar {
+    width: 10px;
+    height: 10px;
+    margin-top: 40px;
+  }
+
+  #logo-icon2 {
+    width: 7rem;
+  }
+
+  .contact form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .social-links {
+    gap: 3rem;
+  }
+  .social-links a {
+    width: 1.3rem;
+    height: 1.3rem;
+    font-size: 1.9rem;
+  }
+
+  .modal-info {
+    text-align: left;
+  }
+  .modal .modal-content img.icons-list {
+    width: 65px;
+  }
+}
+
+/* =============================== *\
+|       RESPONSIVIDADE 320px        |
+*\ =============================== */
+@media (max-width: 320px) {
+  .logo img {
+    width: 5rem;
+    padding: 0;
+  }
+  .navbar-container {
+    margin: 0;
+    padding: 0 7%;
+    justify-content: space-between;
+  }
+  .navbar-toggle {
+    padding: 0;
+  }
+  #home-page {
+    padding-bottom: 15px;
+  }
+  .hero {
+    height: 200px;
+  }
+  .hero-title {
+    line-height: 0;
+    margin-top: 15%;
+  }
+  .hero-title2 {
+    margin-top: 0;
+  }
+  .hero-overlay img#logo-icon {
+    width: 60px;
+    padding: 0 0 40px 0;
+  }
+  .roxo-stripe {
+    height: 30px;
+    margin-top: -30px;
+  }
+  .hero-overlay h1 {
+    font-size: 25px;
+  }
+  .hero-overlay h2 {
+    font-size: 18px;
+  }
+
+  .typing-text-background h2 {
+    font-size: 23px;
+  }
+  .typing-text {
+    white-space: normal !important; /* permite quebra só no mobile */
+    flex-wrap: wrap;
+    font-size: 1.2rem; /* diminui tamanho somente no mobile */
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .section-title-RG,
+  .section-title-TS,
+  .section-title {
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .paragrafo-text {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 35px;
+    margin-left: 1%;
+    margin-right: 1%;
+    border-radius: 20px;
+  }
+
+  .logo-symbol {
+    padding: 0;
+  }
+
+  #logo-icon {
+    width: 55px;
+    height: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .slide-icon {
+    padding: 0 20px;
+  }
+  .slider img {
+    width: 40px;
+  }
+
+  .cards-wrapper {
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    margin: 1%;
+  }
+  .cards-grid {
+    margin-top: 16px;
+  }
+  .card-item {
+    border-radius: 20px;
+  }
+  .card-icon-wrapper {
+    border-radius: 15px;
+  }
+
+  .div-video {
+    margin: 0.5rem;
+  }
+  .video1 iframe,
+  .video2 iframe {
+    width: 250px;
+    height: 141px;
+    margin: 0 auto;
+    margin-bottom: 0.3rem;
+    border-radius: 10px; /* Menor borda para não exagerar */
+  }
+
+  .content2 {
+    width: 650px;
+    height: 135px;
+    margin: 1rem auto;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+  }
+  .bar {
+    width: 8px;
+    height: 8px;
+    margin-top: 40px;
+  }
+
+  #logo-icon2 {
+    width: 5.5rem;
+  }
+
+  .contact form {
+    display: flex;
+    flex-direction: column;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .social-links {
+    gap: 2rem;
+  }
+  .social-links a {
+    width: 1rem;
+    height: 1rem;
+    font-size: 1.7rem;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+  .modal-info {
+    font-size: 16px;
+    text-align: left;
+  }
+  .modal .modal-content .imagens img {
+    width: 230px;
+    height: 130px;
+  }
+  .modal .modal-content img.icons-list {
+    width: 55px;
+  }
+
+  .section-title-equipe {
+    font-size: 2rem;
+  }
+  #team {
+    padding: 0;
+    margin: 0;
+  }
+  .team-grid,
+  .team-grid2 {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+/* Página Equipe */
+.page-section {
+  padding-bottom: 3rem;
+}
